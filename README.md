@@ -51,6 +51,7 @@ In the paper, they use a warm-up procedure during fine-tuning which freezes enco
 <img width="597" alt="Screen Shot 2024-05-15 at 11 29 04 AM" src="https://github.com/afua-ansah/CS4782_Final_Project/assets/34491386/77585c66-1d4a-48af-a594-72437621c643">
 <img width="395" alt="Screen Shot 2024-05-15 at 11 18 07 AM" src="https://github.com/afua-ansah/CS4782_Final_Project/assets/34491386/033ef395-5b69-4181-94d9-5a67b9a61323">
 
+The rotation and CPC models for our implementation had somewhat similar accuracy levels to the paper after 5 epochs.
 One of the biggest differences between our results and those of the paper is that our baseline model performed better than CPC and rotation.
 
 ## Conclusion and Future Work
