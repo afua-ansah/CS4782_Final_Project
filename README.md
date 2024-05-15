@@ -23,44 +23,39 @@ We chose to implement 3 of the models displayed in this graph: contrastive predi
 
 #Baseline
 
-Training from scratch without fine-tuning after pre-training on any self-supervised methods
-Customized DenseNet121 network used in feature extraction
-Binary cross entropy loss provides training signal
+For our baseline model, we trained from scratch without fine-tuning after pre-training on any self-supervised methods.
+We used a customized DenseNet121 network for in feature extraction and binary cross entropy loss for the training signal.
 
 #Contrastive Predictive Coding
 
 CPC predicts the representations of image patches below a certain position from those above it, and evaluates the predictions using binary cross entropy loss
-Relies on an encoder and context network
-Context network is implemented as an autoregressive network using a Gated Recurent Unit (GRU)
-Encoder network is implemented using a customized Densenet121 with a max pooling layer
+It relies on an encoder and context network.
+The context network is implemented as an autoregressive network using a Gated Recurent Unit (GRU), and the encoder network is implemented using a customized Densenet121 with a max pooling layer.
 
 #Rotation Prediction
 
-For each image in the dataset, we choose a rotation amount randomly: either 0, 90, 180, or 270 degrees
-Assign a label to that image based on the rotation amount 
-Train a CNN classification model on the rotated images and corresponding labels
-We created a RotationDataset class that randomly assigns a rotation and corresponding label to each image
-One-hot encoding classification for the label
-As specified in the paper, we used a DenseNet121 for the feature extraction
+For each image in the dataset, we choose a rotation amount randomly: either 0, 90, 180, or 270 degrees.
+Then, we assign a label to that image based on the rotation amount and train a CNN classification model on the rotated images and corresponding labels.
+We created a RotationDataset class that randomly assigns a rotation and corresponding one-hot encoding label to each image.
+As specified in the paper, we used a DenseNet121 for feature extraction.
 
 #Differences between the paper and our re-implementation
 
-We pretrain on the same Kaggle dataset and perform fine-tuning on labeled subsets of it, while the authors pretrain using 2D Fundus images from UK Biobank (which contains 170K images) and fine tune on the labeled Kaggle dataset
-We pre-train over 10 epochs, while the authors perform pre-training over 1000 epochs
-The authors applied augmentations to the diabetic retinopathy scans prior to pre-training
-In the paper, they use a warm-up procedure during fine-tuning which freezes encoder weights during warm-up epochs, and focuses on training classifiers/decoders
+We pretrain on the same Kaggle dataset and perform fine-tuning on labeled subsets of it, while the authors pretrain using 2D Fundus images from UK Biobank (which contains 170K images) and fine tune on the labeled Kaggle dataset.
+We pre-train over 10 epochs, while the authors perform pre-training over 1000 epochs.
+The authors applied augmentations to the diabetic retinopathy scans prior to pre-training, which we did not include.
+In the paper, they use a warm-up procedure during fine-tuning which freezes encoder weights during warm-up epochs, and focuses on training classifiers/decoders.
 
 ## Results and Analysis
 
 <img width="597" alt="Screen Shot 2024-05-15 at 11 29 04 AM" src="https://github.com/afua-ansah/CS4782_Final_Project/assets/34491386/77585c66-1d4a-48af-a594-72437621c643">
 <img width="395" alt="Screen Shot 2024-05-15 at 11 18 07 AM" src="https://github.com/afua-ansah/CS4782_Final_Project/assets/34491386/033ef395-5b69-4181-94d9-5a67b9a61323">
 
+One of the biggest differences between our results and those of the paper is that our baseline model performed better than CPC and rotation.
+
 ## Conclusion and Future Work
 
-Possible future work:
-Analyzing results for CPC and rotation
-Freezing encoder weights during warm-up epochs, as specified in the paper
-
+Some possible future work we could do on this project includes making changes to make our process more similar to that of the paper, and noting what changes that has. For example, we could freeze encoder weights during warm-up epochs. In addition, we could increase the model capability to cover 3D images as well.
 
 ## References
 
