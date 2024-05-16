@@ -21,25 +21,25 @@ We chose to implement 3 of the models displayed in this graph: contrastive predi
 
 ## Re-implementation Details
 
-#Baseline
+Baseline
 
 For our baseline model, we trained from scratch without fine-tuning after pre-training on any self-supervised methods.
 We used a customized DenseNet121 network for in feature extraction and binary cross entropy loss for the training signal.
 
-#Contrastive Predictive Coding
+Contrastive Predictive Coding
 
 CPC predicts the representations of image patches below a certain position from those above it, and evaluates the predictions using binary cross entropy loss
 It relies on an encoder and context network.
 The context network is implemented as an autoregressive network using a Gated Recurent Unit (GRU), and the encoder network is implemented using a customized Densenet121 with a max pooling layer.
 
-#Rotation Prediction
+Rotation Prediction
 
 For each image in the dataset, we choose a rotation amount randomly: either 0, 90, 180, or 270 degrees.
 Then, we assign a label to that image based on the rotation amount and train a CNN classification model on the rotated images and corresponding labels.
 We created a RotationDataset class that randomly assigns a rotation and corresponding one-hot encoding label to each image.
 As specified in the paper, we used a DenseNet121 for feature extraction.
 
-#Differences between the paper and our re-implementation
+Differences between the paper and our re-implementation
 
 We pretrain on the same Kaggle dataset and perform fine-tuning on labeled subsets of it, while the authors pretrain using 2D Fundus images from UK Biobank (which contains 170K images) and fine tune on the labeled Kaggle dataset.
 We pre-train over 10 epochs, while the authors perform pre-training over 1000 epochs.
@@ -52,11 +52,12 @@ In the paper, they use a warm-up procedure during fine-tuning which freezes enco
 <img width="395" alt="Screen Shot 2024-05-15 at 11 18 07 AM" src="https://github.com/afua-ansah/CS4782_Final_Project/assets/34491386/033ef395-5b69-4181-94d9-5a67b9a61323">
 
 The rotation and CPC models for our implementation had somewhat similar accuracy levels to the paper after 5 epochs.
-One of the biggest differences between our results and those of the paper is that our baseline model performed better than CPC and rotation.
+One of the biggest differences between our results and those of the paper is that our baseline model performed better than CPC and rotation, where as in the paper the baseline performed worse. One possible reason for this is that the CPC and rotation models could require more training data than the baseline data in order to improve accuracy.
 
 ## Conclusion and Future Work
 
-Some possible future work we could do on this project includes making changes to make our process more similar to that of the paper, and noting what changes that has. For example, we could freeze encoder weights during warm-up epochs. In addition, we could increase the model capability to cover 3D images as well.
+Since there were some unexpected differences between our results and the paper, it might be helpful to re-run the models with more data and see whether that makes the results more similar.
+Some other possible future work we could do on this project includes making changes to make our process more similar to that of the paper, and noting what changes that has. For example, we could freeze encoder weights during warm-up epochs. In addition, we could increase the model capability to cover 3D images as well.
 
 ## References
 
