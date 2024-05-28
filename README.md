@@ -2,18 +2,12 @@
 
 ## Introduction
 We based our project on the paper 3D Self-Supervised Methods for Medical Imaging by Aiham Taleb et al. It was submitted to the 34th Conference on Neural Information Processing Systems (NeurIPS 2020) and discusses applications of self-supervised computer vision methods to medical imaging tasks.
-The paper covers both 2D and 3D methods such as contrastive predictive coding, rotation prediction and jigsaw puzzles, and focuses on downstream tasks in the medical imaging domain such as brain and pancreas tumor segmentation, diabetic retinopathy detection
-It compares 2D and 3D methods and assesses gains with respect to efficiency, performance, and convergence speed
+The paper covers both 2D and 3D methods such as contrastive predictive coding, rotation prediction and jigsaw puzzles, and focuses on downstream tasks in the medical imaging domain such as brain and pancreas tumor segmentation, and diabetic retinopathy detection. It compares 2D and 3D self-supervised methods and assesses gains with respect to efficiency, performance, and convergence speed.
 
-Medical imaging is important for disease prevention, diagnosis, and treatment. However, generating expert annotations of 3D medical images at scale is non-trivial, expensive, and time-consuming.
-Self-supervised models do not require explicit data labeling, which saves time and money for large unlabeled corpuses or datasets.
-Transfer learning from self supervised methods encourage the model to learn semantic representations about the concepts in the data. 
-This paper achieves results competitive to state-of-the-art solutions at a fraction of the computational expense.
-
-For our project, we focused on on recreating diabetic retinopathy detection results.
-We used the dataset from the Diabetic Retinopathy 2019 Kaggle Challenge, containing roughly 5590 Fundus 2D images, each of which was rated by a clinician on a severity scale of 0 to 4.
+Medical imaging is important for disease prevention, diagnosis, and treatment. However, generating expert annotations of 3D medical images at scale is non-trivial, expensive, and time-consuming. Self-supervised models do not require explicit data labeling, which saves time and money for large unlabeled corpuses or datasets. Critically important, transfer learning from self-supervised methods encourage the model to learn semantic representations about the concepts in the data. This paper ultimately achieves results competitive to state-of-the-art solutions at a fraction of the computational expense.
 
 ## Chosen Result
+For our project, we focused on on recreating diabetic retinopathy detection results. We used the dataset from the Diabetic Retinopathy 2019 Kaggle Challenge, containing roughly 5590 Fundus 2D images, each of which was rated by a clinician on a severity scale of 0 to 4.
 
 We chose to implement 3 of the models displayed in this graph: contrastive predictive coding, rotation prediction, and the baseline model. The below figure compares different 2D models used to help detect diabetic retinopathy. The evaluation metric for comparing the models is 5-fold cross-validation accuracy.
 
